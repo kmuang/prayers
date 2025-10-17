@@ -1,132 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <title>Catholic Prayer Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
-  <link rel="shortcut icon" href="img/prayer.jpg" type="image/jpg">
-
-  <style>
-    body.dark-mode {
-      background-color: #121212;
-      color: #f8f9fa;
-    }
-    .card.dark-mode {
-      background-color: #1e1e1e;
-      border-color: #333;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prayer Book</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Enable Tailwind Dark Mode via class strategy
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
 </head>
-<body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#">🙏 Zomi Catholic Prayers</a>
-      </button>
-        <button class="btn btn-outline-secondary ms-3" onclick="toggleDarkMode()">💡</button>
-    </div>
-  </nav>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-500">
 
-  <!-- Main Content -->
-  <div class="container py-5">
-    <div class="text-center mb-4">
-      <h1 class="display-5">Welcome to Your Prayer Space</h1>
-      <p class="lead">Find peace, reflection, and spiritual strength</p>
-    </div>
-
-    <!-- Tabs for Prayer Categories -->
-    <ul class="nav nav-tabs mb-3" id="prayerTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="holy-tab" data-bs-toggle="tab" data-bs-target="#holy" type="button">Thungetna tuam tuam </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="mary-tab" data-bs-toggle="tab" data-bs-target="#mary" type="button">Tonu Maria tung thungetna</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Nisim Thunget na </button>
-      </li>
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Hunzui Thunget na </button>
-      </li> 
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Inn thupha piakna </button>
-      </li>
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Missa Biakpiakna </button>
-      </li>
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Athu tawh Biakpiakna </button>
-      </li> 
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Mawhsut dan</button>
-      </li> 
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Singlamteh lam zuihna</button>
-      </li>
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="gratitude-tab" data-bs-toggle="tab" data-bs-target="#gratitude" type="button">Missa tawh kisai</button>
-      </li>
-    </ul>
-
-    <div class="tab-content" id="prayerTabsContent">
-      <!-- Holy Spirit Prayer -->
-      <div class="tab-pane fade show active" id="holy" role="tabpanel">
-        <div class="card shadow-sm mb-4">
-          <div class="card-body bg-white">
-            <h5 class="card-title">Prayer to the Holy Spirit</h5>
-            <p class="card-text">
-              Come, Holy Spirit, fill the hearts of Your faithful and kindle in them the fire of Your love...<br>
-              Through Christ our Lord. Amen.
-            </p>
-          </div>
-        </div>
+  <!-- Header -->
+  <header class="bg-indigo-600 dark:bg-indigo-800 text-white py-5 shadow">
+    <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold">🙏 Prayer Book</h1>
+        <p class="text-sm text-indigo-100 dark:text-indigo-200">Browse prayers by category or mark your favorites 🌟</p>
       </div>
 
-      <!-- Virgin Mary Prayer -->
-      <div class="tab-pane fade" id="mary" role="tabpanel">
-        <div class="card shadow-sm mb-4">
-          <div class="card-body bg-white">
-            <h5 class="card-title">Hail Mary</h5>
-            <p class="card-text">
-              Hail Mary, full of grace, the Lord is with thee...<br>
-              Pray for us sinners, now and at the hour of our death. Amen.
-            </p>
-          </div>
-        </div>
-      </div>
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode Toggle -->
+        <button id="themeToggle" class="bg-white text-indigo-600 dark:bg-gray-700 dark:text-yellow-300 px-3 py-1 rounded-md text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+          🌙 Dark Mode
+        </button>
 
-      <!-- Gratitude Prayer -->
-      <div class="tab-pane fade" id="gratitude" role="tabpanel">
-        <div class="card shadow-sm mb-4">
-          <div class="card-body bg-white">
-            <h5 class="card-title">Prayer of Gratitude</h5>
-            <p class="card-text">
-              Thank You, Lord, for the blessings You have given me...<br>
-              May I always be mindful of Your grace. Amen.
-            </p>
+        <button id="showFav" class="bg-white text-indigo-600 dark:bg-gray-700 dark:text-yellow-300 px-3 py-1 rounded-md text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-600">
+          Favorites
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto p-4 sm:p-6 space-y-10">
+    <section id="prayersContainer"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-600 dark:bg-indigo-800 text-white text-center py-4 mt-10">
+    <p class="text-sm">© 2025 Prayer Book — “Pray continually.” (1 Thess. 5:17)</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 hidden bg-black bg-opacity-60 items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-gray-800 rounded-lg max-w-lg w-full shadow-lg overflow-hidden">
+      <div class="p-5">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 id="modalTitle" class="text-xl font-semibold"></h2>
+            <p id="modalSubtitle" class="text-sm text-gray-500 dark:text-gray-400 mt-1"></p>
           </div>
+          <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-lg font-bold">×</button>
+        </div>
+
+        <hr class="my-4 border-gray-200 dark:border-gray-700">
+
+        <p id="modalText" class="text-gray-800 dark:text-gray-100 whitespace-pre-line leading-relaxed"></p>
+
+        <div class="mt-5 flex justify-end gap-2">
+          <button id="copyBtn" class="bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700">Copy</button>
+          <button id="printBtn" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-3 py-1 rounded text-sm">Print</button>
+          <button id="favBtn" class="bg-yellow-400 px-3 py-1 rounded text-sm">★</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-white text-center py-4 mt-5 shadow-sm">
-    <p class="mb-1">&copy; 2025 Catholic Devotionals</p>
-    <a href="#" class="text-decoration-none me-3">Facebook</a>
-    <a href="#" class="text-decoration-none me-3">Instagram</a>
-    <a href="#" class="text-decoration-none">Contact</a>
-  </footer>
-
-  <!-- Bootstrap JS + Dark Mode Toggle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      document.querySelectorAll('.card').forEach(card => card.classList.toggle('dark-mode'));
+  const FAV_KEY = 'prayer_favorites_v2';
+  const THEME_KEY = 'prayer_theme';
+  let favorites = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+  let currentPrayer = null;
+
+  // Theme setup
+  const root = document.documentElement;
+  if (localStorage.getItem(THEME_KEY) === 'dark' || 
+      (!localStorage.getItem(THEME_KEY) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
+
+  document.getElementById('themeToggle').onclick = () => {
+    root.classList.toggle('dark');
+    const mode = root.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem(THEME_KEY, mode);
+  };
+
+  const CATEGORIES = [
+    {
+      name: "🌅 Morning & Evening Prayers",
+      prayers: [
+        { id: "morning", title: "Morning Prayer", text: "O Lord, thank You for this new day. Fill my heart with peace and my mind with purpose. Amen." },
+        { id: "evening", title: "Evening Prayer", text: "Father, thank You for this day. Forgive my shortcomings and grant me rest. Amen." },
+      ]
+    },
+    {
+      name: "💖 Healing & Protection",
+      prayers: [
+        { id: "healing", title: "Prayer for Healing", text: "Heavenly Father, bring comfort and strength to those in pain. Restore health and peace in Your time. Amen." },
+        { id: "protection", title: "Prayer for Protection", text: "Lord, be my shield and refuge. Guard me from harm and guide me safely. Amen." },
+      ]
+    },
+    {
+      name: "🌍 Peace & Gratitude",
+      prayers: [
+        { id: "peace", title: "Prayer for Peace", text: "Lord of Peace, bring calm to troubled hearts and unity to the world. Let Your peace dwell within us. Amen." },
+        { id: "gratitude", title: "Prayer of Gratitude", text: "Thank You for life, love, and blessings unseen. May gratitude shape my thoughts and actions today. Amen." },
+      ]
     }
+  ];
+
+  const container = document.getElementById("prayersContainer");
+
+  function renderPrayers(list = CATEGORIES) {
+    container.innerHTML = "";
+    list.forEach(cat => {
+      const section = document.createElement("section");
+      section.innerHTML = `
+        <h2 class="text-xl font-semibold text-indigo-700 dark:text-indigo-300 mb-3">${cat.name}</h2>
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+          ${cat.prayers.map(p => `
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-md transition">
+              <h3 class="font-semibold">${p.title}</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">${p.text.slice(0, 80)}...</p>
+              <div class="flex justify-between mt-3">
+                <button onclick="openModal('${p.id}')" class="bg-indigo-600 text-white px-3 py-1 text-sm rounded hover:bg-indigo-700">View</button>
+                <button onclick="toggleFav('${p.id}', this)" class="text-sm px-2 py-1 rounded ${favorites.includes(p.id) ? 'bg-yellow-400' : 'bg-gray-100 dark:bg-gray-700'}">${favorites.includes(p.id) ? '★' : '☆'}</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      container.appendChild(section);
+    });
+  }
+
+  function openModal(id) {
+    const p = CATEGORIES.flatMap(c => c.prayers).find(x => x.id === id);
+    if (!p) return;
+    currentPrayer = p;
+    document.getElementById('modalTitle').textContent = p.title;
+    document.getElementById('modalText').textContent = p.text;
+    document.getElementById('favBtn').textContent = favorites.includes(p.id) ? '★' : '☆';
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('modal').classList.add('flex');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+    document.getElementById('modal').classList.remove('flex');
+  }
+
+  document.getElementById('copyBtn').onclick = () => {
+    if (currentPrayer) navigator.clipboard.writeText(currentPrayer.text);
+    alert("Prayer copied to clipboard");
+  };
+
+  document.getElementById('printBtn').onclick = () => {
+    if (!currentPrayer) return;
+    const w = window.open("", "_blank");
+    w.document.write(`<pre>${currentPrayer.text}</pre>`);
+    w.print();
+  };
+
+  function toggleFav(id, btn) {
+    const idx = favorites.indexOf(id);
+    if (idx === -1) favorites.push(id); else favorites.splice(idx, 1);
+    localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
+    btn.textContent = favorites.includes(id) ? '★' : '☆';
+  }
+
+  document.getElementById('favBtn').onclick = () => {
+    if (currentPrayer) {
+      toggleFav(currentPrayer.id, document.getElementById('favBtn'));
+    }
+  };
+
+  document.getElementById('showFav').onclick = () => {
+    const favPrayers = CATEGORIES.map(c => ({
+      name: c.name,
+      prayers: c.prayers.filter(p => favorites.includes(p.id))
+    })).filter(c => c.prayers.length > 0);
+    if (favPrayers.length === 0) {
+      alert("No favorites yet — tap ☆ to save a prayer.");
+      return;
+    }
+    renderPrayers(favPrayers);
+  };
+
+  renderPrayers();
   </script>
 </body>
 </html>
